@@ -40,5 +40,12 @@ namespace QLBH.GUI
             frm_login.MdiParent= this;
             frm_login.Show();
         }
+
+        private void hàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmHangHoa frm_HH = new FrmHangHoa();
+            frm_HH.MdiParent= this;
+            frm_HH.Show();
+        }
     }
 }
