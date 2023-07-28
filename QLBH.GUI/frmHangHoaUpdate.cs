@@ -16,5 +16,10 @@ namespace QLBH.GUI
         {
             InitializeComponent();
         }
+
+        private void frmHangHoaUpdate_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

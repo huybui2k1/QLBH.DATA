@@ -98,6 +98,7 @@
             this.txtMaNhanVien.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtMaNhanVien.Location = new System.Drawing.Point(300, 119);
             this.txtMaNhanVien.Name = "txtMaNhanVien";
+            this.txtMaNhanVien.ReadOnly = true;
             this.txtMaNhanVien.Size = new System.Drawing.Size(263, 30);
             this.txtMaNhanVien.TabIndex = 31;
             // 
@@ -226,6 +227,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbDanhmuc);
+            this.Enabled = false;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "frmNhanVienUpdate";
             this.Text = "frmNhanVienUpdate";

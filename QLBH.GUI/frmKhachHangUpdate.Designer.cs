@@ -80,9 +80,11 @@
             // 
             // txtMakhachhang
             // 
+            this.txtMakhachhang.Enabled = false;
             this.txtMakhachhang.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtMakhachhang.Location = new System.Drawing.Point(274, 103);
             this.txtMakhachhang.Name = "txtMakhachhang";
+            this.txtMakhachhang.ReadOnly = true;
             this.txtMakhachhang.Size = new System.Drawing.Size(263, 30);
             this.txtMakhachhang.TabIndex = 20;
             // 
