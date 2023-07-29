@@ -76,6 +76,7 @@
             this.btnThoat.TabIndex = 52;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnCapNhat
             // 
@@ -234,6 +235,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbDanhmuc);
+            this.Enabled = false;
             this.Name = "frmHangHoaUpdate";
             this.Text = "frmHangHoaUpdate";
             this.Load += new System.EventHandler(this.frmHangHoaUpdate_Load);
