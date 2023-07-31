@@ -10,11 +10,13 @@ namespace QLBH.DataLibrary.Repository
 {
     public  interface IKhachHangRepository
     {
-        IEnumerable<KhachHang> GetKhachHang();
+        IEnumerable<KhachHang> GetKhachHangList();
+       
+        IEnumerable<KhachHang> GetKhachHangByKeyword(string keyword);
         KhachHang GetKhachHangByID(int khachHangId);
         void InsertKhachHang(KhachHang khachHang);
        
-        void UpdateKhachHangr(KhachHang khachHang);
+        void UpdateKhachHang(KhachHang khachHang);
         void DeleteKhachHang(int khachHangId);
     }
 }

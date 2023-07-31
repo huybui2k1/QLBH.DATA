@@ -142,6 +142,7 @@
             this.btnCapNhat.TabIndex = 24;
             this.btnCapNhat.Text = "Cập Nhật";
             this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // btnThoat
             // 
@@ -153,6 +154,7 @@
             this.btnThoat.TabIndex = 25;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // frmKhachHangUpdate
             // 
@@ -173,6 +175,7 @@
             this.Controls.Add(this.lbDanhmuc);
             this.Name = "frmKhachHangUpdate";
             this.Text = "frmKhachHangUpdate";
+            this.Load += new System.EventHandler(this.frmKhachHangUpdate_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

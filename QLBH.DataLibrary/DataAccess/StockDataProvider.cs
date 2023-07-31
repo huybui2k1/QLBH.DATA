@@ -9,7 +9,6 @@ namespace AutomobileLibrary.DataAccess
 {
     public class StockDataProvider
     {
-        public StockDataProvider() { }
         public string ConnectionString { get; set; }
         public StockDataProvider(string connectionString) => ConnectionString = connectionString;
         public void CloseConnection(SqlConnection connection)=>connection.Close();
@@ -25,9 +24,9 @@ namespace AutomobileLibrary.DataAccess
             };
         }
         //----
-        public IDataReader GetDataReader(string commandText,CommandType commandType,out SqlConnection connection , params SqlParameter[] parameters) {
+        public IDataReader GetDataAdapter(string commandText,CommandType commandType,out SqlConnection connection , params SqlParameter[] parameters) {
 
-            IDataReader reader = null;
+            IDataReader dataReader = null;
             try
             {
                 connection = new SqlConnection(ConnectionString);
@@ -41,13 +40,39 @@ namespace AutomobileLibrary.DataAccess
                         command.Parameters.Add(parameter);
                     }
                 }
-                reader = command.ExecuteReader();
+                dataReader = command.ExecuteReader();
             }
             catch(Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            return reader;
+            return dataReader;
+        }
+
+        public IDataReader GetDataReader(string commandText, CommandType commandType, out SqlConnection connection, params SqlParameter[] parameters)
+        {
+
+            IDataReader dataReader = null;
+            try
+            {
+                connection = new SqlConnection(ConnectionString);
+                connection.Open();
+                var command = new SqlCommand(commandText, connection);
+                command.CommandType = commandType;
+                if (parameters != null)
+                {
+                    foreach (var parameter in parameters)
+                    {
+                        command.Parameters.Add(parameter);
+                    }
+                }
+                dataReader = command.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return dataReader;
         }
         //-----
         public void Delete(string commandText, CommandType commandType,

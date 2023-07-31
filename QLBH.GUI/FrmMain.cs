@@ -20,6 +20,7 @@ namespace QLBH.GUI
         {
             FrmKhachHang frm_KH = new FrmKhachHang();
           frm_KH.MdiParent= this;
+          
             frm_KH.Show();
         }
         private void mnu_NhanVien_Click(object sender, EventArgs e)

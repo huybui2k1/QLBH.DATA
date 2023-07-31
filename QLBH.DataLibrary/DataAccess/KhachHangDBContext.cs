@@ -13,7 +13,7 @@ namespace QLBH.DataLibrary.DataAccess
 {
     public class KhachHangDBContext : BaseDAL
     {
-        private static KhachHangDBContext instance = null;
+        private static KhachHangDBContext instance ;
         private static readonly object instanceLock = new object();
         public KhachHangDBContext() { }
         public static KhachHangDBContext Instance
@@ -30,16 +30,54 @@ namespace QLBH.DataLibrary.DataAccess
                 }
             }
         }
+        ////
+        public IEnumerable<KhachHang> GetKhachHangByKeyword(string tuKhoa)
+        {
+            IDataReader dataReader = null;
+            string SQLSelect = "Select * from KhachHang where TenKhachHang like @TenKhachHang or DiaChi like @DiaChi ";
+            var parameters = new List<SqlParameter>();
+            var khachHang = new List<KhachHang>();
+            try
+            {
+                parameters.Add(dataProvider.CreateParameter("@TenKhachHang", 200, "%" + tuKhoa + "%", DbType.String));
+                parameters.Add(dataProvider.CreateParameter("@DiaChi", 200, "%" + tuKhoa + "%", DbType.String));
+               // var param = dataProvider.CreateParameter("@TenKhachHang", 200, tuKhoa, DbType.String);
+                dataReader = dataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection, parameters.ToArray());
+                while (dataReader.Read())
+                {
+                    khachHang.Add(new KhachHang
+                    {
+                        MaKhachHang = dataReader.GetInt32(0),
+                        TenKhachHang = dataReader.GetString(1),
+                        DiaChi = dataReader.GetString(2),
+                        DienThoai = dataReader.GetString(3)
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+            finally
+            {
+                dataReader.Close();
+                CloseConnection();
+
+            }
+            return khachHang;
+        }
         //////
         ///
         public IEnumerable<KhachHang> GetKhachHangList()
         {
             IDataReader dataReader = null;
-            string SQLSelect = "Select MaKhachHang , TenKhachHang ,DiaChi , DienThoai from KhachHang";
+            string SQLSelect = "Select * from KhachHang";
             var khachHang = new List<KhachHang>();
             try
             {
-                dataReader = dataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection);
+               
+                dataReader = dataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection );
                 while (dataReader.Read())
                 {
                     khachHang.Add(new KhachHang
@@ -100,7 +138,6 @@ namespace QLBH.DataLibrary.DataAccess
             }
             return kh;
         }
-
         ///------- addd new
         public void AddNew(KhachHang kh)
         {
@@ -117,16 +154,12 @@ namespace QLBH.DataLibrary.DataAccess
                     parameters.Add(dataProvider.CreateParameter("@DienThoai", 50, kh.DienThoai, DbType.String));
                     dataProvider.Insert(SQLInsert, CommandType.Text, parameters.ToArray());
                 }
-                else
-                {
-                    throw new Exception("The khachhang is already exist.");
-                }
+                
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
             finally { CloseConnection(); }
 
         }
-
         ///// update
         public void Update(KhachHang kh)
         {
@@ -140,15 +173,12 @@ namespace QLBH.DataLibrary.DataAccess
                     parameters.Add(dataProvider.CreateParameter("@MaKhachHang", 200, kh.MaKhachHang, DbType.Int32));
                     parameters.Add(dataProvider.CreateParameter("@TenKhachHang", 200, kh.TenKhachHang, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@DiaChi", 200, kh.DiaChi, DbType.String));
-                    parameters.Add(dataProvider.CreateParameter("@DienThoai", 50, kh.DienThoai, DbType.Decimal));
+                    parameters.Add(dataProvider.CreateParameter("@DienThoai", 50, kh.DienThoai, DbType.String));
                    
                     dataProvider.Update(SQLUpdate, CommandType.Text, parameters.ToArray());
 
                 }
-                else
-                {
-                    throw new Exception("The khachhang does not already exist.");
-                }
+               
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
             finally { CloseConnection(); }
@@ -170,10 +200,7 @@ namespace QLBH.DataLibrary.DataAccess
                     dataProvider.Delete(SQLDelete, CommandType.Text, param);
 
                 }
-                else
-                {
-                    throw new Exception("The KhachHang does not already exist.");
-                }
+                
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
             finally { CloseConnection(); }

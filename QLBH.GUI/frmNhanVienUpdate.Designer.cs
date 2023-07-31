@@ -56,6 +56,7 @@
             this.btnThoat.TabIndex = 36;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnCapNhat
             // 
@@ -67,6 +68,7 @@
             this.btnCapNhat.TabIndex = 35;
             this.btnCapNhat.Text = "Cập Nhật";
             this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // txtDienThoaiNV
             // 
@@ -231,6 +233,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "frmNhanVienUpdate";
             this.Text = "frmNhanVienUpdate";
+            this.Load += new System.EventHandler(this.frmNhanVienUpdate_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -91,21 +91,21 @@
             // mnu_KhachHang
             // 
             this.mnu_KhachHang.Name = "mnu_KhachHang";
-            this.mnu_KhachHang.Size = new System.Drawing.Size(224, 26);
+            this.mnu_KhachHang.Size = new System.Drawing.Size(194, 26);
             this.mnu_KhachHang.Text = "QL Khách Hàng";
             this.mnu_KhachHang.Click += new System.EventHandler(this.kháchHàngToolStripMenuItem_Click);
             // 
             // mnu_NhanVien
             // 
             this.mnu_NhanVien.Name = "mnu_NhanVien";
-            this.mnu_NhanVien.Size = new System.Drawing.Size(224, 26);
+            this.mnu_NhanVien.Size = new System.Drawing.Size(194, 26);
             this.mnu_NhanVien.Text = "QL Nhân viên ";
             this.mnu_NhanVien.Click += new System.EventHandler(this.mnu_NhanVien_Click);
             // 
             // mnu_HangHoa
             // 
             this.mnu_HangHoa.Name = "mnu_HangHoa";
-            this.mnu_HangHoa.Size = new System.Drawing.Size(224, 26);
+            this.mnu_HangHoa.Size = new System.Drawing.Size(194, 26);
             this.mnu_HangHoa.Text = "QL Hàng Hóa";
             this.mnu_HangHoa.Click += new System.EventHandler(this.hàngHóaToolStripMenuItem_Click);
             // 
@@ -130,6 +130,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

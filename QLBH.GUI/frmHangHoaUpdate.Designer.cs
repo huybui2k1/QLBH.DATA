@@ -41,12 +41,12 @@
             this.lbDanhmuc = new System.Windows.Forms.Label();
             this.txtDonGiaNhap = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.ptbUpload = new System.Windows.Forms.PictureBox();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.picAvatar = new System.Windows.Forms.PictureBox();
             this.btnUpload = new System.Windows.Forms.Button();
-            this.txtSoluong = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbUpload)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoluong)).BeginInit();
+            this.txtSoLuong = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDonGiaBan
@@ -88,6 +88,7 @@
             this.btnCapNhat.TabIndex = 51;
             this.btnCapNhat.Text = "Cập Nhật";
             this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // txtTenHangHoa
             // 
@@ -179,21 +180,21 @@
             this.label5.TabIndex = 59;
             this.label5.Text = "Ghi chú";
             // 
-            // textBox1
+            // txtGhiChu
             // 
-            this.textBox1.Location = new System.Drawing.Point(186, 334);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(338, 163);
-            this.textBox1.TabIndex = 60;
+            this.txtGhiChu.Location = new System.Drawing.Point(186, 334);
+            this.txtGhiChu.Multiline = true;
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(338, 163);
+            this.txtGhiChu.TabIndex = 60;
             // 
-            // ptbUpload
+            // picAvatar
             // 
-            this.ptbUpload.Location = new System.Drawing.Point(484, 110);
-            this.ptbUpload.Name = "ptbUpload";
-            this.ptbUpload.Size = new System.Drawing.Size(227, 150);
-            this.ptbUpload.TabIndex = 61;
-            this.ptbUpload.TabStop = false;
+            this.picAvatar.Location = new System.Drawing.Point(484, 110);
+            this.picAvatar.Name = "picAvatar";
+            this.picAvatar.Size = new System.Drawing.Size(227, 150);
+            this.picAvatar.TabIndex = 61;
+            this.picAvatar.TabStop = false;
             // 
             // btnUpload
             // 
@@ -204,13 +205,14 @@
             this.btnUpload.TabIndex = 62;
             this.btnUpload.Text = "Upload";
             this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
-            // txtSoluong
+            // txtSoLuong
             // 
-            this.txtSoluong.Location = new System.Drawing.Point(186, 214);
-            this.txtSoluong.Name = "txtSoluong";
-            this.txtSoluong.Size = new System.Drawing.Size(261, 27);
-            this.txtSoluong.TabIndex = 63;
+            this.txtSoLuong.Location = new System.Drawing.Point(186, 214);
+            this.txtSoLuong.Name = "txtSoLuong";
+            this.txtSoLuong.Size = new System.Drawing.Size(261, 27);
+            this.txtSoLuong.TabIndex = 63;
             // 
             // frmHangHoaUpdate
             // 
@@ -218,10 +220,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Fuchsia;
             this.ClientSize = new System.Drawing.Size(940, 645);
-            this.Controls.Add(this.txtSoluong);
+            this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.btnUpload);
-            this.Controls.Add(this.ptbUpload);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.picAvatar);
+            this.Controls.Add(this.txtGhiChu);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtDonGiaNhap);
             this.Controls.Add(this.txtDonGiaBan);
@@ -239,8 +241,8 @@
             this.Name = "frmHangHoaUpdate";
             this.Text = "frmHangHoaUpdate";
             this.Load += new System.EventHandler(this.frmHangHoaUpdate_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbUpload)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoluong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,9 +262,9 @@
         private Label lbDanhmuc;
         private TextBox txtDonGiaNhap;
         private Label label5;
-        private TextBox textBox1;
-        private PictureBox ptbUpload;
+        private TextBox txtGhiChu;
+        private PictureBox picAvatar;
         private Button btnUpload;
-        private NumericUpDown txtSoluong;
+        private NumericUpDown txtSoLuong;
     }
 }

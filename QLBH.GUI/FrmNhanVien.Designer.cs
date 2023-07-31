@@ -36,8 +36,8 @@
             this.btnChinhSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThemMoi = new System.Windows.Forms.Button();
-            this.dgvData = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
+            this.dgvNhanVien = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.SuspendLayout();
             // 
             // lbDanhmucNV
@@ -69,6 +69,7 @@
             this.txtTimKiemNV.Name = "txtTimKiemNV";
             this.txtTimKiemNV.Size = new System.Drawing.Size(328, 30);
             this.txtTimKiemNV.TabIndex = 36;
+            this.txtTimKiemNV.TextChanged += new System.EventHandler(this.txtTimKiemNV_TextChanged);
             // 
             // label1
             // 
@@ -88,6 +89,7 @@
             this.btnDong.TabIndex = 34;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click_1);
             // 
             // btnChinhSua
             // 
@@ -97,6 +99,7 @@
             this.btnChinhSua.TabIndex = 33;
             this.btnChinhSua.Text = "Chỉnh sửa";
             this.btnChinhSua.UseVisualStyleBackColor = true;
+            this.btnChinhSua.Click += new System.EventHandler(this.btnChinhSua_Click);
             // 
             // btnXoa
             // 
@@ -106,6 +109,7 @@
             this.btnXoa.TabIndex = 32;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click_1);
             // 
             // btnThemMoi
             // 
@@ -115,16 +119,19 @@
             this.btnThemMoi.TabIndex = 31;
             this.btnThemMoi.Text = "Thêm mới";
             this.btnThemMoi.UseVisualStyleBackColor = true;
+            this.btnThemMoi.Click += new System.EventHandler(this.btnThemMoi_Click);
             // 
-            // dgvData
+            // dgvNhanVien
             // 
-            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvData.Location = new System.Drawing.Point(59, 159);
-            this.dgvData.Name = "dgvData";
-            this.dgvData.RowHeadersWidth = 51;
-            this.dgvData.RowTemplate.Height = 29;
-            this.dgvData.Size = new System.Drawing.Size(696, 312);
-            this.dgvData.TabIndex = 30;
+            this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNhanVien.Location = new System.Drawing.Point(59, 159);
+            this.dgvNhanVien.Name = "dgvNhanVien";
+            this.dgvNhanVien.RowHeadersWidth = 51;
+            this.dgvNhanVien.RowTemplate.Height = 29;
+            this.dgvNhanVien.Size = new System.Drawing.Size(696, 312);
+            this.dgvNhanVien.TabIndex = 30;
+            this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
+            this.dgvNhanVien.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellContentDoubleClick);
             // 
             // FrmNhanVien
             // 
@@ -138,11 +145,12 @@
             this.Controls.Add(this.btnChinhSua);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnThemMoi);
-            this.Controls.Add(this.dgvData);
+            this.Controls.Add(this.dgvNhanVien);
             this.Controls.Add(this.lbDanhmucNV);
             this.Name = "FrmNhanVien";
             this.Text = "FrmNhanVien";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+            this.Load += new System.EventHandler(this.FrmNhanVien_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,6 +166,6 @@
         private Button btnChinhSua;
         private Button btnXoa;
         private Button btnThemMoi;
-        private DataGridView dgvData;
+        private DataGridView dgvNhanVien;
     }
 }
