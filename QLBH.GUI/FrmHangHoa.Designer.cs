@@ -1,6 +1,6 @@
 ﻿namespace QLBH.GUI
 {
-    partial class FrmHangHoa
+    partial class frmHangHoa
     {
         /// <summary>
         /// Required designer variable.
@@ -28,152 +28,145 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbDanhmucNV = new System.Windows.Forms.Label();
-            this.btnDong = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.dgvData = new System.Windows.Forms.DataGridView();
-            this.btnTimkiem = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtTimkiem = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
+            this.btnTimKiemHH = new System.Windows.Forms.Button();
+            this.txtTimKiemHh = new System.Windows.Forms.TextBox();
+            this.lbMaHangHoa = new System.Windows.Forms.Label();
+            this.lbDanhmucHH = new System.Windows.Forms.Label();
+            this.btnDongHangHoa = new System.Windows.Forms.Button();
+            this.btnSuaHangHoa = new System.Windows.Forms.Button();
+            this.btnXoaHangHoa = new System.Windows.Forms.Button();
+            this.btnThemHangHoa = new System.Windows.Forms.Button();
+            this.dgvHangHoa = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa)).BeginInit();
             this.SuspendLayout();
             // 
-            // lbDanhmucNV
+            // btnTimKiemHH
             // 
-            this.lbDanhmucNV.AutoSize = true;
-            this.lbDanhmucNV.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbDanhmucNV.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDanhmucNV.ForeColor = System.Drawing.Color.Black;
-            this.lbDanhmucNV.Location = new System.Drawing.Point(302, 21);
-            this.lbDanhmucNV.Name = "lbDanhmucNV";
-            this.lbDanhmucNV.Size = new System.Drawing.Size(250, 38);
-            this.lbDanhmucNV.TabIndex = 49;
-            this.lbDanhmucNV.Text = "Quản Lý Hàng Hóa";
+            this.btnTimKiemHH.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnTimKiemHH.Location = new System.Drawing.Point(603, 119);
+            this.btnTimKiemHH.Name = "btnTimKiemHH";
+            this.btnTimKiemHH.Size = new System.Drawing.Size(115, 32);
+            this.btnTimKiemHH.TabIndex = 26;
+            this.btnTimKiemHH.Text = "Tìm Kiếm";
+            this.btnTimKiemHH.UseVisualStyleBackColor = true;
+            this.btnTimKiemHH.Click += new System.EventHandler(this.btnTimKiemHH_Click);
             // 
-            // btnDong
+            // txtTimKiemHh
             // 
-            this.btnDong.Location = new System.Drawing.Point(737, 448);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(94, 54);
-            this.btnDong.TabIndex = 48;
-            this.btnDong.Text = "Đóng";
-            this.btnDong.UseVisualStyleBackColor = true;
-            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
+            this.txtTimKiemHh.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTimKiemHh.Location = new System.Drawing.Point(258, 121);
+            this.txtTimKiemHh.Name = "txtTimKiemHh";
+            this.txtTimKiemHh.Size = new System.Drawing.Size(312, 30);
+            this.txtTimKiemHh.TabIndex = 25;
+            this.txtTimKiemHh.TextChanged += new System.EventHandler(this.txtTimKiemHh_TextChanged);
             // 
-            // btnXoa
+            // lbMaHangHoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(492, 448);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(94, 54);
-            this.btnXoa.TabIndex = 46;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            this.lbMaHangHoa.AutoSize = true;
+            this.lbMaHangHoa.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbMaHangHoa.Location = new System.Drawing.Point(79, 124);
+            this.lbMaHangHoa.Name = "lbMaHangHoa";
+            this.lbMaHangHoa.Size = new System.Drawing.Size(174, 23);
+            this.lbMaHangHoa.TabIndex = 24;
+            this.lbMaHangHoa.Text = "Từ khóa cần tìm kiếm";
             // 
-            // btnSua
+            // lbDanhmucHH
             // 
-            this.btnSua.Location = new System.Drawing.Point(269, 448);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(94, 54);
-            this.btnSua.TabIndex = 45;
-            this.btnSua.Text = "Chỉnh Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            this.lbDanhmucHH.AutoSize = true;
+            this.lbDanhmucHH.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbDanhmucHH.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbDanhmucHH.ForeColor = System.Drawing.Color.Black;
+            this.lbDanhmucHH.Location = new System.Drawing.Point(264, 30);
+            this.lbDanhmucHH.Name = "lbDanhmucHH";
+            this.lbDanhmucHH.Size = new System.Drawing.Size(282, 38);
+            this.lbDanhmucHH.TabIndex = 23;
+            this.lbDanhmucHH.Text = "QUẢN LÝ HÀNG HÓA";
             // 
-            // btnThem
+            // btnDongHangHoa
             // 
-            this.btnThem.Location = new System.Drawing.Point(56, 448);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(94, 54);
-            this.btnThem.TabIndex = 44;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            this.btnDongHangHoa.Location = new System.Drawing.Point(624, 490);
+            this.btnDongHangHoa.Name = "btnDongHangHoa";
+            this.btnDongHangHoa.Size = new System.Drawing.Size(94, 36);
+            this.btnDongHangHoa.TabIndex = 22;
+            this.btnDongHangHoa.Text = "Đóng";
+            this.btnDongHangHoa.UseVisualStyleBackColor = true;
+            this.btnDongHangHoa.Click += new System.EventHandler(this.btnDongHangHoa_Click);
             // 
-            // dgvData
+            // btnSuaHangHoa
             // 
-            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvData.Location = new System.Drawing.Point(59, 159);
-            this.dgvData.Name = "dgvData";
-            this.dgvData.RowHeadersWidth = 51;
-            this.dgvData.RowTemplate.Height = 29;
-            this.dgvData.Size = new System.Drawing.Size(772, 269);
-            this.dgvData.TabIndex = 43;
-            this.dgvData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellClick);
-            this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
+            this.btnSuaHangHoa.Location = new System.Drawing.Point(280, 490);
+            this.btnSuaHangHoa.Name = "btnSuaHangHoa";
+            this.btnSuaHangHoa.Size = new System.Drawing.Size(94, 36);
+            this.btnSuaHangHoa.TabIndex = 21;
+            this.btnSuaHangHoa.Text = "Chỉnh sửa";
+            this.btnSuaHangHoa.UseVisualStyleBackColor = true;
+            this.btnSuaHangHoa.Click += new System.EventHandler(this.btnSuaHangHoa_Click);
             // 
-            // btnTimkiem
+            // btnXoaHangHoa
             // 
-            this.btnTimkiem.Location = new System.Drawing.Point(711, 84);
-            this.btnTimkiem.Name = "btnTimkiem";
-            this.btnTimkiem.Size = new System.Drawing.Size(111, 48);
-            this.btnTimkiem.TabIndex = 58;
-            this.btnTimkiem.Text = "Tìm Kiếm";
-            this.btnTimkiem.UseVisualStyleBackColor = true;
+            this.btnXoaHangHoa.Location = new System.Drawing.Point(463, 490);
+            this.btnXoaHangHoa.Name = "btnXoaHangHoa";
+            this.btnXoaHangHoa.Size = new System.Drawing.Size(94, 36);
+            this.btnXoaHangHoa.TabIndex = 20;
+            this.btnXoaHangHoa.Text = "Xóa";
+            this.btnXoaHangHoa.UseVisualStyleBackColor = true;
+            this.btnXoaHangHoa.Click += new System.EventHandler(this.btnXoaHangHoa_Click);
             // 
-            // label8
+            // btnThemHangHoa
             // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.Firebrick;
-            this.label8.Location = new System.Drawing.Point(50, 92);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 20);
-            this.label8.TabIndex = 59;
-            this.label8.Text = "Nhập từ khóa";
+            this.btnThemHangHoa.Location = new System.Drawing.Point(79, 490);
+            this.btnThemHangHoa.Name = "btnThemHangHoa";
+            this.btnThemHangHoa.Size = new System.Drawing.Size(94, 36);
+            this.btnThemHangHoa.TabIndex = 19;
+            this.btnThemHangHoa.Text = "Thêm mới";
+            this.btnThemHangHoa.UseVisualStyleBackColor = true;
+            this.btnThemHangHoa.Click += new System.EventHandler(this.btnThemHangHoa_Click);
             // 
-            // txtTimkiem
+            // dgvHangHoa
             // 
-            this.txtTimkiem.Location = new System.Drawing.Point(170, 85);
-            this.txtTimkiem.Multiline = true;
-            this.txtTimkiem.Name = "txtTimkiem";
-            this.txtTimkiem.Size = new System.Drawing.Size(535, 47);
-            this.txtTimkiem.TabIndex = 60;
-            this.txtTimkiem.Click += new System.EventHandler(this.txtTimkiem_Click);
-            this.txtTimkiem.TextChanged += new System.EventHandler(this.txtTimkiem_TextChanged);
+            this.dgvHangHoa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHangHoa.Location = new System.Drawing.Point(79, 181);
+            this.dgvHangHoa.Name = "dgvHangHoa";
+            this.dgvHangHoa.RowHeadersWidth = 51;
+            this.dgvHangHoa.RowTemplate.Height = 29;
+            this.dgvHangHoa.Size = new System.Drawing.Size(639, 289);
+            this.dgvHangHoa.TabIndex = 18;
+            this.dgvHangHoa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHangHoa_CellClick);
+            this.dgvHangHoa.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHangHoa_CellDoubleClick);
             // 
-            // FrmHangHoa
+            // frmHangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(936, 564);
-            this.Controls.Add(this.txtTimkiem);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.btnTimkiem);
-            this.Controls.Add(this.lbDanhmucNV);
-            this.Controls.Add(this.btnDong);
-            this.Controls.Add(this.btnXoa);
-            this.Controls.Add(this.btnSua);
-            this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.dgvData);
-            this.Name = "FrmHangHoa";
-            this.Text = "FrmHangHoa";
-            this.Load += new System.EventHandler(this.FrmHangHoa_Load_1);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+            this.ClientSize = new System.Drawing.Size(800, 565);
+            this.Controls.Add(this.btnTimKiemHH);
+            this.Controls.Add(this.txtTimKiemHh);
+            this.Controls.Add(this.lbMaHangHoa);
+            this.Controls.Add(this.lbDanhmucHH);
+            this.Controls.Add(this.btnDongHangHoa);
+            this.Controls.Add(this.btnSuaHangHoa);
+            this.Controls.Add(this.btnXoaHangHoa);
+            this.Controls.Add(this.btnThemHangHoa);
+            this.Controls.Add(this.dgvHangHoa);
+            this.Name = "frmHangHoa";
+            this.Text = "frmHangHoa";
+            this.Load += new System.EventHandler(this.frmHangHoa_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private Label lbDanhmucNV;
-        private Button btnDong;
-        private Button btnXoa;
-        private Button btnSua;
-        private Button btnThem;
-        private DataGridView dgvData;
-        private Button btnTimkiem;
-        private Label label8;
-        private TextBox txtTimkiem;
+
         private Button btnTimKiemHH;
-        private TextBox txtTimKiemHH;
-        private Label label1;
-        private Button btnThoat;
-        private Button btnChinhSua;
-        private Button btnXoaHH;
-        private Button btnThemMoi;
+        private TextBox txtTimKiemHh;
+        private Label lbMaHangHoa;
+        private Label lbDanhmucHH;
+        private Button btnDongHangHoa;
+        private Button btnSuaHangHoa;
+        private Button btnXoaHangHoa;
+        private Button btnThemHangHoa;
         private DataGridView dgvHangHoa;
-        private Label label2;
     }
 }

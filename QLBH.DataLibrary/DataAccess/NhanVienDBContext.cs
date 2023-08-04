@@ -34,7 +34,7 @@ namespace QLBH.DataLibrary.DataAccess
         public IEnumerable<NhanVien> GetNhanVienByKeyword(string tuKhoa)
         {
             IDataReader dataReader = null;
-            string SQLSelect = "Select * from NhanVien where TenNhanVien like @TenNhanVien or DiaChi like @DiaChi ";
+            string SQLSelect = "Select * from NhanVien where TenNhanVien like @TenNhanVien or DiaChi like @DiaChi";
             var parameters = new List<SqlParameter>();
             var nhanViens = new List<NhanVien>();
             try
@@ -49,8 +49,8 @@ namespace QLBH.DataLibrary.DataAccess
                     {
                         MaNhanVien = dataReader.GetInt32(0),
                         TenNhanVien = dataReader.GetString(1),
-                        DiaChi = dataReader.GetString(2),
-                        DienThoai = dataReader.GetString(3),
+                        DiaChi = dataReader.GetString(3),
+                        DienThoai = dataReader.GetString(4),
                         GioiTinh = dataReader.GetBoolean(2),
                         NgaySinh = dataReader.GetDateTime(5)
 
@@ -87,8 +87,8 @@ namespace QLBH.DataLibrary.DataAccess
                     {
                         MaNhanVien = dataReader.GetInt32(0),
                         TenNhanVien = dataReader.GetString(1),
-                        DiaChi = dataReader.GetString(2),
-                        DienThoai = dataReader.GetString(3),
+                        DiaChi = dataReader.GetString(3),
+                        DienThoai = dataReader.GetString(4),
                         GioiTinh = dataReader.GetBoolean(2),
                         NgaySinh = dataReader.GetDateTime(5)
                     });
@@ -113,7 +113,7 @@ namespace QLBH.DataLibrary.DataAccess
         {
             NhanVien nv = null;
             IDataReader dataReader = null;
-            string SQLSelect = "Select * from NhanVien where MaNhanVien = @MaNhanVien";
+            string SQLSelect = "Select * from NhanVien where MaNhanVien= @MaNhanVien";
             try
             {
                 var param = dataProvider.CreateParameter("@MaNhanVien", 4, MaNhanVien, DbType.Int32);
@@ -124,8 +124,8 @@ namespace QLBH.DataLibrary.DataAccess
                     {
                         MaNhanVien = dataReader.GetInt32(0),
                         TenNhanVien = dataReader.GetString(1),
-                        DiaChi = dataReader.GetString(2),
-                        DienThoai = dataReader.GetString(3),
+                        DiaChi = dataReader.GetString(3),
+                        DienThoai = dataReader.GetString(4),
                         GioiTinh = dataReader.GetBoolean(2),
                         NgaySinh = dataReader.GetDateTime(5)
                     };
@@ -153,9 +153,10 @@ namespace QLBH.DataLibrary.DataAccess
                 NhanVien k = GetNhanVienByID(nv.MaNhanVien);
                 if (k == null)
                 {
-                    string SQLInsert = "Insert INTO NhanVien(MaNhanVien, TenNhanVien, DiaChi ,DienThoai ,GioiTinh , NgaySinh) values(@MaKhachHang,@TenKhachHang,@DiaChi,@DienThoai ,@GioiTinh , @NgaySinh)";
+                    string SQLInsert = "INSERT INTO NhanVien(MaNhanVien,TenNhanVien, DiaChi, DienThoai, GioiTinh, NgaySinh) Values(@MaNhanVien,@TenNhanVien, @DiaChi, @DienThoai, @GioiTinh, @NgaySinh)";
                     var parameters = new List<SqlParameter>();
-                  
+
+                    parameters.Add(dataProvider.CreateParameter("@MaNhanVien", 4, nv.MaNhanVien, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@TenNhanVien", 200, nv.TenNhanVien, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@DiaChi", 200, nv.DiaChi, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@DienThoai", 50, nv.DienThoai, DbType.String));
@@ -178,8 +179,9 @@ namespace QLBH.DataLibrary.DataAccess
                 NhanVien c = GetNhanVienByID(nv.MaNhanVien);
                 if (c != null)
                 {
-                    string SQLUpdate = "Update NhanVien set TenNhanVien=@TenNhanVien ,DiaChi=@DiaChi,DienThoai= @DienThoai where MaNhanVien = @MaNhanVien)";
+                    string SQLUpdate = "UPDATE NhanVien set MaNhanVien=@MaNhanVien,TenNhanVien=@TenNhanVien, DiaChi=@DiaChi, DienThoai=@DienThoai, GioiTinh=@GioiTinh, NgaySinh=@NgaySinh where MaNhanVien=@MaNhanVien";
                     var parameters = new List<SqlParameter>();
+                    parameters.Add(dataProvider.CreateParameter("@MaNhanVien", 4, nv.MaNhanVien, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@TenNhanVien", 200, nv.TenNhanVien, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@DiaChi", 200, nv.DiaChi, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@DienThoai", 50, nv.DienThoai, DbType.String));
@@ -196,15 +198,15 @@ namespace QLBH.DataLibrary.DataAccess
         }
 
         ///remove 
-        public void Remove(int MaNhanVien)
+        public void Remove(int nhanVienID)
         {
             try
             {
-                NhanVien kh = GetNhanVienByID(MaNhanVien);
+                NhanVien kh = GetNhanVienByID(nhanVienID);
                 if (kh != null)
                 {
-                    string SQLDelete = "Delete NhanVien  where MaNhanVien = @MaNhanVien)";
-                    var param = dataProvider.CreateParameter("@MaNhanVien", 4, MaNhanVien, DbType.Int32);
+                    string SQLDelete = "DELETE NhanVien where MaNhanVien=@MaNhanVien";
+                    var param = dataProvider.CreateParameter("@MaNhanVien", 4, nhanVienID, DbType.Int32);
                     dataProvider.Delete(SQLDelete, CommandType.Text, param);
                 }
             }

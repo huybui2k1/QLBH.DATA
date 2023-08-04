@@ -43,7 +43,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ckbNam = new System.Windows.Forms.CheckBox();
             this.txtNgaySinhNV = new System.Windows.Forms.MaskedTextBox();
-            this.ckbNu = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnThoat
@@ -100,7 +99,6 @@
             this.txtMaNhanVien.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtMaNhanVien.Location = new System.Drawing.Point(300, 119);
             this.txtMaNhanVien.Name = "txtMaNhanVien";
-            this.txtMaNhanVien.ReadOnly = true;
             this.txtMaNhanVien.Size = new System.Drawing.Size(263, 30);
             this.txtMaNhanVien.TabIndex = 31;
             // 
@@ -197,23 +195,12 @@
             this.txtNgaySinhNV.Size = new System.Drawing.Size(259, 27);
             this.txtNgaySinhNV.TabIndex = 40;
             // 
-            // ckbNu
-            // 
-            this.ckbNu.AutoSize = true;
-            this.ckbNu.Location = new System.Drawing.Point(433, 373);
-            this.ckbNu.Name = "ckbNu";
-            this.ckbNu.Size = new System.Drawing.Size(51, 24);
-            this.ckbNu.TabIndex = 41;
-            this.ckbNu.Text = "Nữ";
-            this.ckbNu.UseVisualStyleBackColor = true;
-            // 
             // frmNhanVienUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(800, 482);
-            this.Controls.Add(this.ckbNu);
             this.Controls.Add(this.txtNgaySinhNV);
             this.Controls.Add(this.ckbNam);
             this.Controls.Add(this.label6);
@@ -229,7 +216,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbDanhmuc);
-            this.Enabled = false;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "frmNhanVienUpdate";
             this.Text = "frmNhanVienUpdate";
@@ -256,6 +242,5 @@
         private Label label6;
         private CheckBox ckbNam;
         private MaskedTextBox txtNgaySinhNV;
-        private CheckBox ckbNu;
     }
 }

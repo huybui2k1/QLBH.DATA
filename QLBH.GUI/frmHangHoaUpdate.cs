@@ -30,7 +30,7 @@ namespace QLBH.GUI
 
         private void frmHangHoaUpdate_Load(object sender, EventArgs e)
         {
-            if (InsertOrUpdate == true)
+            if (InsertOrUpdate == false)
             {
                 txtMaHangHoa.Text = HangHoaInfo.MaHangHoa.ToString();
                 txtTenHangHoa.Text = HangHoaInfo.TenHangHoa.ToString();
@@ -69,7 +69,7 @@ namespace QLBH.GUI
                     if (MessageBox.Show("Bạn đã tạo mới thành công!", "Thông tin") == DialogResult.OK)
                     {
                         this.Visible = false;
-                        ((FrmHangHoa)this.Owner).LoadHangHoaList();
+                        ((frmHangHoa)this.Owner).LoadHangHoaList();
                     }
                 }
                 else
@@ -78,7 +78,7 @@ namespace QLBH.GUI
                     if (MessageBox.Show("Bạn đã cập nhật thành công!", "Thông tin") == DialogResult.OK)
                     {
                         this.Visible = false;
-                        ((FrmHangHoa)this.Owner).LoadHangHoaList();
+                        ((frmHangHoa)this.Owner).LoadHangHoaList();
                     }
                 }
 

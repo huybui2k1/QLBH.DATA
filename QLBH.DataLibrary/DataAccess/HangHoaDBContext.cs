@@ -31,7 +31,7 @@ namespace QLBH.DataLibrary.DataAccess
             }
         }
         ////
-        public IEnumerable<HangHoa> GetHangHoaByKeyword(string keyword)
+        public IEnumerable<HangHoa> GetHangHoaByKeyword(string tuKhoa)
         {
             IDataReader dataReader = null;
             string SQLSelect = "Select * from HangHoa where TenHangHoa like @TenHangHoa or GhiChu like @GhiChu ";
@@ -39,8 +39,8 @@ namespace QLBH.DataLibrary.DataAccess
             var hangHoas = new List<HangHoa>();
             try
             {
-                parameters.Add(dataProvider.CreateParameter("@TenHanHoa", 200, "%" + keyword + "%", DbType.String));
-                parameters.Add(dataProvider.CreateParameter("@GhiChu", 500, "%" + keyword + "%", DbType.String));
+                parameters.Add(dataProvider.CreateParameter("@TenHangHoa", 200, "%" + tuKhoa + "%", DbType.String));
+                parameters.Add(dataProvider.CreateParameter("@GhiChu", 500, "%" + tuKhoa + "%", DbType.String));
             
                 dataReader = dataProvider.GetDataAdapter(SQLSelect, CommandType.Text, out connection, parameters.ToArray());
                 while (dataReader.Read())
@@ -148,7 +148,7 @@ namespace QLBH.DataLibrary.DataAccess
                 HangHoa h = GetHangHoaByID(hh.MaHangHoa);
                 if (h == null)
                 {
-                    string SQLInsert = "Insert INTO HangHoa(TenHangHoa, SoLuong, DonGiaNhap ,DonGiaBan, Anh , GhiChu) values(@TenHangHoa,@SoLuong,@DonGiaNhap,@DonGiaBan,@Anh,@GhiChu)";
+                    string SQLInsert = "Insert INTO HangHoa(TenHangHoa, SoLuong, DonGiaNhap ,DonGiaBan, Anh , GhiChu) Values(@TenHangHoa,@SoLuong,@DonGiaNhap,@DonGiaBan,@Anh,@GhiChu)";
                     var parameters = new List<SqlParameter>();
                     parameters.Add(dataProvider.CreateParameter("@TenHangHoa", 200, hh.TenHangHoa, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@SoLuong", 10, hh.SoLuong, DbType.String));
@@ -195,7 +195,7 @@ namespace QLBH.DataLibrary.DataAccess
                 {
                     string SQLDelete = "Delete HangHoa  where MaHangHoa = @MaHangHoa)";
                     var parameters = new List<SqlParameter>();
-                    parameters.Add(dataProvider.CreateParameter("@CarID", 4, hangHoaID, DbType.Int32));
+                    parameters.Add(dataProvider.CreateParameter("@MaHangHoa", 4, hangHoaID, DbType.Int32));
                     dataProvider.Delete(SQLDelete, CommandType.Text, parameters.ToArray());
                 }   
             }

@@ -170,6 +170,7 @@ namespace QLBH.DataLibrary.DataAccess
                 {
                     string SQLUpdate = "Update KhachHang set TenKhachHang=@TenKhachHang ,DiaChi=@DiaChi,DienThoai= @DienThoai where MaKhachHang = @MaKhachHang)";
                     var parameters = new List<SqlParameter>();
+                    var khachHangs = new List<KhachHang>();
                     parameters.Add(dataProvider.CreateParameter("@MaKhachHang", 200, kh.MaKhachHang, DbType.Int32));
                     parameters.Add(dataProvider.CreateParameter("@TenKhachHang", 200, kh.TenKhachHang, DbType.String));
                     parameters.Add(dataProvider.CreateParameter("@DiaChi", 200, kh.DiaChi, DbType.String));
@@ -194,7 +195,7 @@ namespace QLBH.DataLibrary.DataAccess
                 if (kh != null)
                 {
                     string SQLDelete = "Delete KhachHang  where MaKhachHang = @MaKhachHang)";
-                    var param = dataProvider.CreateParameter("@CarID", 4, MaKhachHang, DbType.Int32);
+                    var param = dataProvider.CreateParameter("@MaKhachHang", 4, MaKhachHang, DbType.Int32);
 
 
                     dataProvider.Delete(SQLDelete, CommandType.Text, param);

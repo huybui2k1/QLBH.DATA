@@ -16,7 +16,7 @@ namespace QLBH.DataLibrary.Repository
         NhanVien GetNhanVienByID(int MaNhanVien);
         void InsertNhanVien(NhanVien nhanVien);
        
-        void UpdateNhanVien(NhanVien nhanVien);
-        void DeleteNhanVien(int MaNhanVien);
+        void UpdateNhanVien(NhanVien nv);
+        void DeleteNhanVien(int nhanVienId);
     }
 }

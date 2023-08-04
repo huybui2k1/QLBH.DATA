@@ -16,10 +16,10 @@ namespace QLBH.DataLibrary.Repository
         public IEnumerable<HangHoa> GetHangHoaByKeyword(string keyword) => HangHoaDBContext.Instance.GetHangHoaByKeyword(keyword);
         public HangHoa GetHangHoaByID(int hangHoaID) => HangHoaDBContext.Instance.GetHangHoaByID(hangHoaID);
        
-        public void InsertHangHoa(HangHoa hh) => HangHoaDBContext.Instance.AddNew(hh);
+        public void InsertHangHoa(HangHoa hangHoa) => HangHoaDBContext.Instance.AddNew(hangHoa);
         public void DeleteHangHoa(int hangHoaID) => HangHoaDBContext.Instance.Delete(hangHoaID);
 
-        public void UpdateHangHoa(HangHoa hh) => HangHoaDBContext.Instance.Update(hh);
+        public void UpdateHangHoa(HangHoa hangHoa) => HangHoaDBContext.Instance.Update(hangHoa);
 
        
     }

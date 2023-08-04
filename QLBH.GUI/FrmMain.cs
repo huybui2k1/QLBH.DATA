@@ -25,7 +25,7 @@ namespace QLBH.GUI
         }
         private void mnu_NhanVien_Click(object sender, EventArgs e)
         {
-            FrmNhanVien frm_nv = new FrmNhanVien();
+            frmNhanVien frm_nv = new frmNhanVien();
             frm_nv.MdiParent= this;
             frm_nv.Show();
         }
@@ -44,7 +44,7 @@ namespace QLBH.GUI
 
         private void hàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmHangHoa frm_HH = new FrmHangHoa();
+            frmHangHoa frm_HH = new frmHangHoa();
             frm_HH.MdiParent= this;
             frm_HH.Show();
         }

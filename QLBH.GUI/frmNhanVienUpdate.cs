@@ -34,11 +34,11 @@ namespace QLBH.GUI
             {
                 txtMaNhanVien.Text = NhanVienInfo.MaNhanVien.ToString();
                 txtTenNhanVien.Text = NhanVienInfo.TenNhanVien.ToString();
-               txtDiachiNV.Text = NhanVienInfo.DiaChi.ToString();
+                txtDiachiNV.Text = NhanVienInfo.DiaChi.ToString();
                 txtDienThoaiNV.Text = NhanVienInfo.DienThoai.ToString();
-                txtNgaySinhNV.Text = NhanVienInfo.NgaySinh.ToString();
+                txtNgaySinhNV.Text = NhanVienInfo.NgaySinh.ToString("dd/MM/yyyy");
                 ckbNam.Checked = NhanVienInfo.GioiTinh;
-                ckbNu.Checked = NhanVienInfo.GioiTinh;
+
             }
         }
 
@@ -64,7 +64,7 @@ namespace QLBH.GUI
                     if (MessageBox.Show("Bạn đã tạo mới thành công!", "Thông tin") == DialogResult.OK)
                     {
                         this.Visible = false;
-                        ((FrmNhanVien)this.Owner).LoadNhanVienList();
+                        ((frmNhanVien)this.Owner).LoadNhanVienList();
                     }
                 }
                 else
@@ -74,7 +74,7 @@ namespace QLBH.GUI
                     if (MessageBox.Show("Bạn đã cập nhật thành công!", "Thông tin") == DialogResult.OK)
                     {
                         this.Visible = false;
-                        ((FrmNhanVien)this.Owner).LoadNhanVienList();
+                        ((frmNhanVien)this.Owner).LoadNhanVienList();
                     }
                 }
             }

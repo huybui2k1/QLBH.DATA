@@ -13,134 +13,17 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QLBH.GUI
 {
-    public partial class FrmNhanVien : Form
+    public partial class frmNhanVien : Form
     {
         INhanVienRepository nhanVienRepository = new NhanVienRepository();
         //Create a data source
         BindingSource source;
         NhanVien nv;
-        public FrmNhanVien()
+        public frmNhanVien()
         {
             InitializeComponent();
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnBoqua_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDong_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTimKiemNV_TextChanged(object sender, EventArgs e)
-        {
-            var nhanViens = nhanVienRepository.GetNhanVienByKeyword(txtTimKiemNV.Text);
-            try
-            {
-                source = new BindingSource();
-                source.DataSource = nhanViens;
-
-
-
-                dgvNhanVien.DataSource = null;
-                dgvNhanVien.DataSource = source;
-                if (nhanViens.Count() == 0)
-                {
-
-                    btnXoa.Enabled = false;
-                    btnChinhSua.Enabled = false;
-                }
-                else
-                {
-                    btnXoa.Enabled = true;
-                    btnChinhSua.Enabled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-
-            }
-        }
-
-        private void btnThemMoi_Click(object sender, EventArgs e)
-        {
-            frmNhanVienUpdate frmNhanVienUpdate = new frmNhanVienUpdate()
-            {
-                Text = "Cập nhật nhân viên",
-                InsertOrUpdate = false,
-                NhanVienInfo = nv,
-                NhanVienRepository = nhanVienRepository
-
-            };
-            frmNhanVienUpdate.Owner = this;
-            if(frmNhanVienUpdate.ShowDialog() == DialogResult.OK)
-            {
-                LoadNhanVienList();
-                source.Position = source.Count- 1;
-            }
-
-        }
-
-        private void btnChinhSua_Click(object sender, EventArgs e)
-        {
-            frmNhanVienUpdate frmNhanVienUpdate = new frmNhanVienUpdate()
-            {
-                Text = "Cập nhật nhân viên",
-                InsertOrUpdate = false,
-                NhanVienInfo = nv,
-                NhanVienRepository = nhanVienRepository
-
-            };
-            frmNhanVienUpdate.Owner = this;
-            if (frmNhanVienUpdate.ShowDialog() == DialogResult.OK)
-            {
-                LoadNhanVienList();
-                source.Position = source.Count - 1;
-            }
-        }
-
-        private void btnXoa_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                nhanVienRepository.DeleteNhanVien(nv.MaNhanVien);
-                LoadNhanVienList();
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
-        }
-
-        private void btnDong_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void FrmNhanVien_Load(object sender, EventArgs e)
-        {
-            LoadNhanVienList();
-        }
         public void LoadNhanVienList()
         {
             var nhanViens = nhanVienRepository.GetNhanViens();
@@ -155,13 +38,13 @@ namespace QLBH.GUI
                 if (nhanViens.Count() == 0)
                 {
 
-                    btnXoa.Enabled = false;
-                    btnChinhSua.Enabled = false;
+                    btnXoaNV.Enabled = false;
+                    btnChinhSuaNV.Enabled = false;
                 }
                 else
                 {
-                    btnXoa.Enabled = true;
-                    btnChinhSua.Enabled = true;
+                    btnXoaNV.Enabled = true;
+                    btnChinhSuaNV.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -171,9 +54,94 @@ namespace QLBH.GUI
             }
         }
 
-        private void dgvNhanVien_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvNhanVien_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnChinhSua_Click(sender, e);
+            btnChinhSuaNV_Click(sender, e);
+        }
+
+        private void btnChinhSuaNV_Click(object sender, EventArgs e)
+        {
+            frmNhanVienUpdate frmNhanVienUpdate = new frmNhanVienUpdate
+            {
+                Text = "Cập nhật khách hàng",
+                InsertOrUpdate = true,
+                NhanVienInfo = nv,
+                NhanVienRepository = nhanVienRepository
+            };
+            frmNhanVienUpdate.Owner = this;
+            if (frmNhanVienUpdate.ShowDialog() == DialogResult.OK)
+            {
+                LoadNhanVienList();
+                source.Position = source.Count - 1;
+            }
+        }
+
+        private void txtQLNV_TextChanged(object sender, EventArgs e)
+        {
+            var nhanViens = nhanVienRepository.GetNhanVienByKeyword(txtQLNV.Text);
+            try
+            {
+                source = new BindingSource();
+                source.DataSource = nhanViens;
+
+
+
+                dgvNhanVien.DataSource = null;
+                dgvNhanVien.DataSource = source;
+                if (nhanViens.Count() == 0)
+                {
+
+                    btnXoaNV.Enabled = false;
+                    btnChinhSuaNV.Enabled = false;
+                }
+                else
+                {
+                    btnXoaNV.Enabled = true;
+                    btnChinhSuaNV.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+
+            }
+        }
+
+        private void btnXoaNV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                nhanVienRepository.DeleteNhanVien(nv.MaNhanVien);
+                LoadNhanVienList();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void btnThemNV_Click(object sender, EventArgs e)
+        {
+            frmNhanVienUpdate frmNhanVienUpdate = new frmNhanVienUpdate()
+            {
+                Text = "Cập nhật khách hàng",
+                InsertOrUpdate = false,
+                NhanVienInfo = nv,
+                NhanVienRepository = nhanVienRepository
+            };
+            frmNhanVienUpdate.Owner = this;
+            if (frmNhanVienUpdate.ShowDialog() == DialogResult.OK)
+            {
+                LoadNhanVienList();
+                source.Position = source.Count - 1;
+            }
+        }
+
+        private void btnDongNV_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -188,10 +156,15 @@ namespace QLBH.GUI
                     TenNhanVien = row.Cells[1].Value.ToString(),
                     DiaChi = row.Cells[2].Value.ToString(),
                     DienThoai = row.Cells[3].Value.ToString(),
-                    GioiTinh = Convert.ToBoolean(row.Cells[4].Value.ToString()),    
+                    GioiTinh = Convert.ToBoolean(row.Cells[4].Value.ToString()),
                     NgaySinh = Convert.ToDateTime(row.Cells[5].Value.ToString())
                 };
             }
+        }
+
+        private void frmNhanVien_Load(object sender, EventArgs e)
+        {
+            LoadNhanVienList();
         }
     }
 }

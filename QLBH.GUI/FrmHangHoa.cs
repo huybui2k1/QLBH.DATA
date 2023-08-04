@@ -12,35 +12,40 @@ using System.Windows.Forms;
 
 namespace QLBH.GUI
 {
-    public partial class FrmHangHoa : Form
+    public partial class frmHangHoa : Form
     {
         IHangHoaRepository hangHoaRepository = new HangHoaRepository();
         BindingSource source;
         HangHoa hh;
-        public FrmHangHoa()
+        public frmHangHoa()
         {
             InitializeComponent();
         }
 
-        private void txtTimkiem_TextChanged(object sender, EventArgs e)
+        private void frmHangHoa_Load(object sender, EventArgs e)
         {
-            var hangHoas = hangHoaRepository.GetHangHoaByKeyword(txtTimkiem.Text);
+            LoadHangHoaList();
+        }
+
+        private void txtTimKiemHh_TextChanged(object sender, EventArgs e)
+        {
+            var hangHoas = hangHoaRepository.GetHangHoaByKeyword(txtTimKiemHh.Text);
             try
             {
                 source = new BindingSource();
                 source.DataSource = hangHoas;
 
-                dgvData.DataSource = null;
-                dgvData.DataSource = source;
+                dgvHangHoa.DataSource = null;
+                dgvHangHoa.DataSource = source;
                 if(hangHoas.Count() == 0 )
                 {
-                    btnXoa.Enabled =false;
-                    btnSua.Enabled =false; 
+                    btnXoaHangHoa.Enabled = false;
+                    btnSuaHangHoa.Enabled = false;
                 }
                 else
                 {
-                    btnXoa.Enabled = true;
-                    btnSua.Enabled = true;
+                    btnXoaHangHoa.Enabled = true;
+                    btnSuaHangHoa.Enabled = true;
                 }
             }
             catch(Exception ex)
@@ -49,7 +54,89 @@ namespace QLBH.GUI
             }
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+
+
+        public void LoadHangHoaList()
+        {
+            var hangHoas = hangHoaRepository.GetHangHoas();
+            try
+            {
+                source = new BindingSource();
+                source.DataSource = hangHoas;
+
+                dgvHangHoa.DataSource = null;
+                dgvHangHoa.AutoGenerateColumns = false;
+                dgvHangHoa.Columns.Clear();  // Xóa tất cả các cột hiện có trên DataGridView
+                // Thêm cột ID và Tên vào DataGridView
+                var maHangHoa = new DataGridViewTextBoxColumn();
+                maHangHoa.DataPropertyName = "MaHangHoa";
+                maHangHoa.HeaderText = "Mã Hàng hoá";
+                dgvHangHoa.Columns.Add(maHangHoa);
+
+                var tenHangHoa = new DataGridViewTextBoxColumn();
+                tenHangHoa.DataPropertyName = "TenHangHoa";
+                tenHangHoa.HeaderText = "Tên Hàng hoá";
+                dgvHangHoa.Columns.Add(tenHangHoa);
+
+                var soLuong = new DataGridViewTextBoxColumn();
+                soLuong.DataPropertyName = "SoLuong";
+                soLuong.HeaderText = "Số lượng";
+                dgvHangHoa.Columns.Add(soLuong);
+
+                var donGiaNhap = new DataGridViewTextBoxColumn();
+                donGiaNhap.DataPropertyName = "DonGiaNhap";
+                donGiaNhap.HeaderText = "Đơn giá nhập";
+                dgvHangHoa.Columns.Add(donGiaNhap);
+
+                var donGiaBan = new DataGridViewTextBoxColumn();
+                donGiaBan.DataPropertyName = "DonGiaBan";
+                donGiaBan.HeaderText = "Đơn giá bán";
+                dgvHangHoa.Columns.Add(donGiaBan);
+                // Ẩn cột Ảnh
+                //dgvHangHoa.Columns[5].Visible = false;
+                dgvHangHoa.DataSource = source;
+
+
+                if (hangHoas.Count() == 0)
+                {
+                    btnXoaHangHoa.Enabled = false;
+                    btnSuaHangHoa.Enabled = false;
+                }
+                else
+                {
+                    btnXoaHangHoa.Enabled = true;
+                    btnSuaHangHoa.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void btnTimKiemHH_Click(object sender, EventArgs e)
+        {
+            txtTimKiemHh_TextChanged(sender, e);
+        }
+
+        private void btnThemHangHoa_Click(object sender, EventArgs e)
+        {
+            frmHangHoaUpdate frmHangHoaUpdate = new frmHangHoaUpdate()
+            {
+                Text = "Cập nhật hàng hoa",
+                InsertOrUpdate = false,
+                HangHoaInfo = hh,
+                HangHoaRepository = hangHoaRepository
+            };
+            frmHangHoaUpdate.Owner = this;
+            if (frmHangHoaUpdate.ShowDialog() == DialogResult.OK)
+            {
+                LoadHangHoaList();
+                source.Position = source.Count - 1;
+            }
+        }
+              
+        private void btnSuaHangHoa_Click(object sender, EventArgs e)
         {
             frmHangHoaUpdate frmHangHoaUpdate = new frmHangHoaUpdate()
             {
@@ -66,7 +153,7 @@ namespace QLBH.GUI
             }
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
+        private void btnXoaHangHoa_Click(object sender, EventArgs e)
         {
             try
             {
@@ -79,103 +166,17 @@ namespace QLBH.GUI
             }
         }
 
-        private void btnDong_Click(object sender, EventArgs e)
+        private void btnDongHangHoa_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void FrmHangHoa_Load(object sender, EventArgs e)
+        private void dgvHangHoa_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            LoadHangHoaList();
-        }
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            frmHangHoaUpdate frmHangHoaUpdate = new frmHangHoaUpdate()
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.RowIndex < dgvHangHoa.Rows.Count - 1)
+            // Kiểm tra nếu người dùng click vào một ô hợp lệ
             {
-                Text = "Cập nhật Hàng hoá",
-                InsertOrUpdate = false,
-                HangHoaInfo = hh,
-                HangHoaRepository = hangHoaRepository
-            };
-            frmHangHoaUpdate.Owner = this;
-            if (frmHangHoaUpdate.ShowDialog() == DialogResult.OK)
-            {
-                LoadHangHoaList();
-                source.Position = source.Count - 1;
-            }
-        }
-
-        private void FrmHangHoa_Load_1(object sender, EventArgs e)
-        {
-            LoadHangHoaList();
-
-        }
-        public void LoadHangHoaList()
-        {
-            var hangHoas = hangHoaRepository.GetHangHoas();
-            try
-            {
-                source = new BindingSource();
-                source.DataSource = hangHoas;
-
-                dgvData.DataSource = null;
-                dgvData.AutoGenerateColumns = false;
-                dgvData.Columns.Clear();
-
-                var maHangHoa = new DataGridViewTextBoxColumn();
-                maHangHoa.DataPropertyName = "MaHangHoa";
-                maHangHoa.HeaderText = "Mã hàng Hóa";
-                dgvData.Columns.Add(maHangHoa);
-
-                var tenHangHoa = new DataGridViewTextBoxColumn();
-                tenHangHoa.DataPropertyName = "TenHangHoa";
-                tenHangHoa.HeaderText = "Tên Hàng hoá";
-                dgvData.Columns.Add(tenHangHoa);
-
-                var soLuong = new DataGridViewTextBoxColumn();
-                soLuong.DataPropertyName = "SoLuong";
-                soLuong.HeaderText = "Số lượng";
-                dgvData.Columns.Add(soLuong);
-
-                var donGiaNhap = new DataGridViewTextBoxColumn();
-                donGiaNhap.DataPropertyName = "DonGiaNhap";
-                donGiaNhap.HeaderText = "Đơn giá nhập";
-                dgvData.Columns.Add(donGiaNhap);
-
-                var donGiaBan = new DataGridViewTextBoxColumn();
-                donGiaBan.DataPropertyName = "DonGiaBan";
-                donGiaBan.HeaderText = "Đơn giá bán";
-                dgvData.Columns.Add(donGiaBan);
-
-
-
-                dgvData.DataSource = source;
-
-                if(hangHoas.Count() == 0 )
-                {
-                    btnXoa.Enabled = false;
-                    btnSua.Enabled = false;
-                }
-                else
-                {
-                    btnXoa.Enabled = true;
-                    btnSua.Enabled = true;
-                }
-            }
-            catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        private void dgvData_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.RowIndex < dgvData.Rows.Count - 1)
-           
-
-            {
-                DataGridViewRow row = dgvData.Rows[e.RowIndex];
+                DataGridViewRow row = dgvHangHoa.Rows[e.RowIndex];
                 var hangHoa = hangHoaRepository.GetHangHoaByID(Convert.ToInt32(row.Cells[0].Value));
                 hh = new HangHoa()
                 {
@@ -190,15 +191,9 @@ namespace QLBH.GUI
             }
         }
 
-        private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvHangHoa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnSua_Click(sender, e);
-
-        }
-
-        private void txtTimkiem_Click(object sender, EventArgs e)
-        {
-            txtTimkiem_TextChanged(sender, e);
+            btnSuaHangHoa_Click(sender, e);
         }
     }
 }

@@ -14,9 +14,9 @@ namespace QLBH.DataLibrary.Repository
        
         IEnumerable<HangHoa> GetHangHoaByKeyword(string keyword);
         HangHoa GetHangHoaByID(int hangHoaID);
-        void InsertHangHoa(HangHoa hh);
+        void InsertHangHoa(HangHoa hangHoa);
        
-        void UpdateHangHoa(HangHoa hh);
+        void UpdateHangHoa(HangHoa hangHoa);
         void DeleteHangHoa(int hangHoaID);
     }
 }

@@ -12,7 +12,7 @@ namespace QLBH.DataLibrary.BusinessObject
         public string TenHangHoa { get; set; }
         public int SoLuong { get; set; }
 
-      public decimal DonGiaNhap { get; set; }
+        public decimal DonGiaNhap { get; set; }
         public decimal DonGiaBan { get; set; }
         public string Anh { get; set; }
         public string GhiChu { get; set; }
